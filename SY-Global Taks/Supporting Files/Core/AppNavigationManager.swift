@@ -35,10 +35,15 @@ class AppNavigationManager: ObservableObject {
 
 enum AppRoute: Hashable {
     case auth(AuthRoute)
+    case tabbar(TabbarRoute)
 }
 
 enum AuthRoute: Hashable {
     case login
+}
+
+enum TabbarRoute: Hashable {
+    case tabbar
 }
 
 @ViewBuilder
@@ -46,5 +51,13 @@ func authDestination(_ route: AuthRoute) -> some View {
     switch route {
     case .login:
         LoginView()
+    }
+}
+
+@ViewBuilder
+func tabbarDestination(_ route: TabbarRoute) -> some View {
+    switch route {
+    case .tabbar:
+        TabbarController()
     }
 }

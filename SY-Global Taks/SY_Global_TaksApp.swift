@@ -13,7 +13,7 @@ struct SY_Global_TaksApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabbarController()
+            LoginView()
                 .environmentObject(navManager)
         }
     }

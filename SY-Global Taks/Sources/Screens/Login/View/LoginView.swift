@@ -11,8 +11,7 @@ struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel()
     
     var body: some View {
-        ZStack {
-            Color("AppColor").ignoresSafeArea(.all)
+        NavigationStack {
             
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: 8) {
@@ -39,18 +38,6 @@ struct LoginView: View {
                 
                 
                 HStack(spacing: 8) {
-                    Button {
-                        //
-                    } label: {
-                        Image("rect")
-                            .resizable()
-                            .frame(width: 16, height: 16)
-                    }
-                    
-                    Text("Remember For 30 Days")
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundStyle(Color("subTextClr"))
-                    
                     Spacer()
                     
                     Button {
@@ -65,12 +52,9 @@ struct LoginView: View {
                 .padding(.bottom, 24)
                 
                 VStack(spacing: 16) {
-                    Button {
-                        if viewModel.emailTextField.isEmpty || viewModel.passwordTextField.isEmpty {
-                            print("Email and Password fields are required")
-                        } else {
-                            print("Login Success!")
-                        }
+                    
+                    NavigationLink {
+                        TabbarController()
                     } label: {
                         Text("Log In")
                             .font(.system(size: 16, weight: .medium))
@@ -116,21 +100,7 @@ struct LoginView: View {
                     }
                 }
                 .padding(.bottom, 24)
-                
-//                HStack {
-//                    Text("Don't Have An Account?")
-//                        .font(.system(size: 14, weight: .regular, design: .default))
-//                        .foregroundStyle(Color("subTextClr"))
-//                    
-//                    Button {
-//                        
-//                    } label: {
-//                        Text("Sign Up For Free")
-//                            .font(.system(size: 14, weight: .medium, design: .default))
-//                            .foregroundStyle(Color("textClr"))
-//                    }
-//                }
-            }
+            }.padding(.horizontal, 20)
         }
     }
 }
